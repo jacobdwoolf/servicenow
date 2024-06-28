@@ -1,0 +1,58 @@
+.print-label {
+    width: 8.5in;
+    height: 11in;
+}
+
+.record-details {
+    display: flex;
+    flex-direction: column;
+
+    .detail-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    span {
+        min-width: 20%;
+    }
+
+    /*
+        .vip class will be selectively applied by the ng-class attribute, if applicable
+    */
+    span.vip {
+        color: red;
+        font-weight: bold;
+    }
+
+    .watch-list {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* 
+    media query to only apply certain styles when displayed on-screen, such as the preview border 
+    note on the 'padding' style, here: 
+        as mentioned in the HTML Template comments, this will be overridden by the inline-style applied by ng-style, if it's applied
+        it's included here as a default/fallback, which will apply if the widget option is set to an invalid value
+*/
+@media screen {
+    .print-label {
+        padding: .5in;
+        border: 2px dashed gray;
+        border-radius: 4px;
+    }
+}
+
+/* 
+    media query to only apply certain styles when printing, such as hiding the preview border, or any elements marked with class no-print
+*/
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    .print-label {
+        border: none;
+    }
+}
